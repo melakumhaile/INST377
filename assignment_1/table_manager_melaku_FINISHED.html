@@ -294,91 +294,75 @@
     </table>-->
     <!-- Feel free to add empty tags. Data shouldn't be here. -->
     <div id="org_table"></div>
+    <button onclick="main()">Try it</button>
     <script>
         // outputs the first item of the organizations array. Just for testing.
         //console.log(organizations[0]); 
 
         // Your JavaScript code goes here
-        var tsp = 0;
-        var nprofit = 0;
-        var lt10 = 0;
-        var sector = 0;
-        var region = 0;
+            var table = document.createElement("TABLE");
+            table.setAttribute("id", "myTable");
+            console.log(table);
+            var d = document.getElementById("org_table");
+            console.log(d);
+            d.appendChild(table);
         
-        var tr1 = document.createElement('tr');
-        for(var i=0; i<organizations.length; i++){
-            if(organizations[i]["Region"] === "North America"){
-                region = region + 1;
-            }
+        function createRow(trID) {
+            var row = document.createElement("TR");
+            row.setAttribute("id", trID);
+            table.appendChild(row);
+        }
+        
+        function createColumn(colText, trID) {
+            var col = document.createElement("TD");
+            var t = document.createTextNode(colText);
+            col.appendChild(t);
+            row = document.getElementById(trID);
+            row.appendChild(col);
+        }
+        
+        function main(){
+            createRow("0");
+            createColumn("Region","0");
+            createColumn("Country","0");
+            createColumn("Country Income Level","0");
+            createColumn("Organization Name","0");
+            createColumn("Organization Type","0");
+            createColumn("Sectors","0");
+            createColumn("Description","0");
+            createColumn("City","0");
+            createColumn("State/Region","0");
+            createColumn("Founding Year","0");
+            createColumn("Size","0");
+            createColumn("Type of Data Used","0");
+            createColumn("profileID","0");
             
-            if(organizations[i]["Founding Year"] > 2008){
-                lt10 = lt10 + 1;
-            }
+            //console.log(organizations[0].keys);
+             
             
-            if(organizations[i]['Type of Data Used'].search("tsportation") != -1){
-                tsp = tsp + 1;
-            }
-            
-            if(organizations[i]['Sectors'].includes("Housing")){
-                var sec = organizations[i]["Sectors"];
-                var idx = sec.indexOf("Housing");
-                if (idx!==-1){
-                    sector++;    
+            for (i = 0; i < organizations.length; i++) {
+                p = i+1;
+                if (p === organizations.length) {
+                    break;
                 }
+                createRow(p);
+                createColumn(organizations[i].Region, p);
+                createColumn(organizations[i].Country, p);
+                createColumn(organizations[i]["Country Income Level"], p);
+                createColumn(organizations[i]["Organization Name"], p);
+                createColumn(organizations[i]["Organization Type"], p);
+                createColumn(organizations[i]["Sectors"], p);
+                createColumn(organizations[i]["Description"], p);
+                createColumn(organizations[i]["City"], p);
+                createColumn(organizations[i]["State/Region"], p);
+                createColumn(organizations[i]["Founding Year"], p);
+                createColumn(organizations[i]["Size"], p);
+                createColumn(organizations[i]["Type of Data Used"], p);
+                createColumn(organizations[i]["profileID"], p);
             }
-            
-            if(organizations[i]['Organization Type']=== "nprofit"){
-                nprofit = nprofit + 1;
-            }
+        }
         
-        
-        
-        var n_america_total = document.createElement('th');
-        n_america_total.innerHTML = "North American Total";
-        var nprofit_total = document.createElement('th');
-        nprofit_total.innerHTML = "Non Profit total";
-        var total_housing = document.createElement('th');
-        total_housing.innerHTML = "Total Sectors including Housing";
-        var lt10_total = document.createElement('th');
-        lt10_total.innerHTML = "Less Than 10 years";
-        var tdata_used = document.createElement('th');
-        tdata_used.innerHTML = "transportation Data Used";
-        
-        
-        
-        
-        
-        tr1.appendChild(n_america_total);
-        tr1.appendChild(nprofit_total);
-        tr1.appendChild(total_housing);
-        tr1.appendChild(lt10_total);
-        tr1.appendChild(tdata_used);
-        
-        
-        document.getElementById('org_table').appendChild(tr1);
-        
-        var tr2 = document.createElement('tr');
-        
-        var td1 = document.createElement('td');
-        td1.innerHTML = region;
-        var td2 = document.createElement('td');
-        td2.innerHTML = nprofit;
-        var td3 = document.createElement('td');
-        td3.innerHTML = sector;
-        var td4 = document.createElement('td');
-        td4.innerHTML = lt10;
-        var td5 = document.createElement('td');
-        td5.innerHTML = tsp;
-        
-        
-        tr2.appendChild(td1);
-        tr2.appendChild(td2);
-        tr2.appendChild(td3);
-        tr2.appendChild(td4);
-        tr2.appendChild(td5);
-        var org_table = document.getElementById('org_table').appendChild(tr2);
-        
-        console.log(org_table);
+        console.log(table);
 
     </script>
 
