@@ -10,15 +10,59 @@
 	</style>
 
 <script>
+var tpn = document.getElementById("tpn");
+var start = document.getElementById("start");
+var stop = document.getElementById("stop");
+var notes = document.getElementById("notes");
 function validateForm() {
     // write code to validate your forms
+    if (tpn === "") {
+        alert("YOU NEED A TEAM PROJECT NAME");
+        return false; 
+    }
 }
 </script>
 
 </head>
 <body>
 	<!-- Create Your Form Below -->
+<form id="myForm" action="form_processor.php" method="post" >
+Team Project Name: <input type="text" name="Team Project Name" id="tpn"><br>
+Time Start: <input type="datetime-local" name="Time Start" id="start"><br>
+Time Stop: <input type="datetime-local" name="Time Stop" id="stop"><br>
+Participation Per Member: <br>
+<input type="radio" name="Participant_A" value="Above and Beyond"> Above and Beyond <br>
+<input type="radio" name="Participant_A" value="Satisfactory"> Satisfactory <br>
+<input type="radio" name="Participant_A" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_A" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_A" value="Absent"> Absent <br>
+Participation Per Member: <br>
+<input type="radio" name="Participant_B" value="Above and Beyond"> Above and Beyond <br>
+<input type="radio" name="Participant_B" value="Satisfactory"> Satisfactory <br>
+<input type="radio" name="Participant_B" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_B" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_B" value="Absent"> Absent <br>
+Participation Per Member: <br>
+<input type="radio" name="Participant_C" value="Above and Beyond"> Above and Beyond <br>
+<input type="radio" name="Participant_C" value="Satisfactory"> Satisfactory <br>
+<input type="radio" name="Participant_C" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_C" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_C" value="Absent"> Absent <br>
+Participation Per Member: <br>
+<input type="radio" name="Participant_D" value="Above and Beyond"> Above and Beyond <br>
+<input type="radio" name="Participant_D" value="Satisfactory"> Satisfactory <br>
+<input type="radio" name="Participant_D" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_D" value="Unsatisfactory"> Unsatisfactory <br>
+<input type="radio" name="Participant_D" value="Absent"> Absent <br>
+Participation Per Member: <br>
+Participation Per Member: <br>
+Participation Per Member: <br>
+Notes: <textarea name="notes" rows="5" cols="40" id="notes"></textarea><br>
+Grade: <br>
+<input type="input" name="grade"> <br>
 
+<input type="submit" name="submit">
+</form>
 
 
 </body>
